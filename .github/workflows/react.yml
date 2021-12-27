@@ -27,6 +27,7 @@ jobs:
       - run: npm i
       - run: npm test
       - run: npm run build
+      - run: mv dist build
       - run: ls
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
