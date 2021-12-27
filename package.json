@@ -3,7 +3,7 @@
   "author": "crision98",
   "version": "0.0.0",
   "main": "public/electron.config.js",
-  "homepage": "./",
+  "homepage": "https://crision-olt.github.io/yak-react-vite",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
