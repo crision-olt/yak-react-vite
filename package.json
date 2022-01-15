@@ -3,32 +3,39 @@
   "author": "crision98",
   "version": "0.0.0",
   "main": "public/electron.config.js",
-  "homepage": "https://crision-olt.github.io/yak-react-vite",
+  "homepage": "./",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "start": "vite",
+    "build": "vite build",
     "preview": "vite preview",
-    "electron-dev": "electron .",
-    "electron-pack": "build --em.main=build/electron.js"
+    "electron:serve": "electron .",
+    "electron:build": "electron-builder -c.extraMetadata.main=build/electron.config.js"
   },
   "build": {
-    "appId": "com.example.electron-cra",
+    "extends": null,
+    "appId": "com.yak-react-vite.electron",
     "files": [
+      "dist/**/*",
       "build/**/*",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "package.json"
     ],
     "directories": {
       "buildResources": "assets"
     }
   },
   "dependencies": {
+    "@electron/remote": "^2.0.1",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
     "autoprefixer": "^10.4.0",
+    "cross-env": "^7.0.3",
     "electron-is-dev": "^2.0.0",
+    "foreman": "^3.0.1",
     "postcss": "^8.4.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "socket.io": "^4.4.1",
     "tailwindcss": "^3.0.7",
     "use-async-resource": "^2.2.2"
   },
