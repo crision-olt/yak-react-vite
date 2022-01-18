@@ -29,7 +29,7 @@ jobs:
       - run: yarn build
 
       - aws-s3/sync:
-          from: build
+          from: dist
           to: "s3://yak-react-vite/"
           arguments: |
             --acl public-read \
