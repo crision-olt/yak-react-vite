@@ -1,0 +1,1 @@
+esbuild --bundle src/index.css --outfile=out.css
