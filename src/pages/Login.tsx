@@ -15,7 +15,7 @@ const Login: FC = (): ReactElement => {
                     <form method="#" action="#" className="mt-10">
 
                         <div>
-                            <input type="email" placeholder="Correo electronico" className="input-text"/>
+                            <input type="email" placeholder="Correo electrónico" className="input-text"/>
                         </div>
 
                         <div className="mt-7">
@@ -26,7 +26,7 @@ const Login: FC = (): ReactElement => {
                             <label htmlFor="remember_me" className="inline-flex items-center w-full cursor-pointer">
                                 <input id="remember_me" type="checkbox" className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember"/>
                                 <span className="ml-2 text-sm text-gray-600">
-                                        Recuerdame
+                                        Recuérdame
                                     </span>
                             </label>
 

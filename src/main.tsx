@@ -3,28 +3,18 @@ import { render as ReactRender } from "react-dom";
 import { init as Sentry } from "@sentry/react";
 import "./index.css";
 import App from "@/App";
-import { I18nextProvider } from "react-i18next";
-import i18next from "i18next";
+import { I18nextProvider, initReactI18next } from "react-i18next";
+import Translation from "i18next";
 import { getSentryConfiguration } from "@/modulesTypes";
-import globalES from "@/translations/es/global.json";
-import globalEN from "@/translations/en/global.json";
+import Backend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { getTranslationConfig } from "@/modulesTypes/translation";
 
 Sentry(getSentryConfiguration());
-i18next.init({
-    interpolation: { excapeValue: false },
-    lng: "en",
-    resources: {
-        es: {
-            global: globalES,
-        },
-        en: {
-            global: globalEN,
-        },
-    },
-});
+Translation.use(Backend).use(LanguageDetector).use(initReactI18next).init(getTranslationConfig);
 ReactRender(
     <StrictMode>
-        <I18nextProvider i18n={i18next}>
+        <I18nextProvider i18n={Translation}>
             <App/>
         </I18nextProvider>
     </StrictMode>,
