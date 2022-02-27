@@ -1,18 +1,16 @@
 import { InitOptions } from "i18next";
-import globalES from "@/translations/es/global.json";
-import globalEN from "@/translations/en/global.json";
 
-export const getTranslationConfig = (): InitOptions => (
-    {
-        interpolation: { escapeValue: false },
-        lng: "en",
-        resources: {
-            es: {
-                global: globalES,
+const Languages = ["en", "es"];
+export const getTranslationConfig = (): InitOptions => {
+    return (
+        {
+            interpolation: { escapeValue: false },
+            react: {
+                useSuspense: false,
             },
-            en: {
-                global: globalEN,
-            },
-        },
-    }
-);
+            fallbackLng: Languages[0],
+            debug: true,
+            lng: Languages[0],
+        }
+    );
+};

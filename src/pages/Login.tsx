@@ -1,33 +1,65 @@
 import { FC, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
+import { FormKey } from "@/types/forms";
+import { FormFactory, FormFactoryProps } from "@/components/formFactory/FormFactory";
 
 const Login: FC = (): ReactElement => {
     const [t] = useTranslation("global");
+    const form = useForm();
+    const onSubmit = (data: any) => console.log({ data });
+    const emailProps: FormKey = {
+        type: "text",
+        size: 12,
+        label: "loginPage.email",
+        register: {
+            name: "email",
+            options: {
+                required: { value: true, message: "Campo requerido" },
+                pattern: {
+                    value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: "El email no tiene el formato correcto.",
+                },
+            },
+
+        },
+    };
+    const passwordProps: FormKey = {
+        type: "password",
+        size: 12,
+        label: "loginPage.password",
+        register: {
+            name: "password",
+            options: {
+                required: { value: true, message: "Campo requerido" },
+                minLength: {
+                    value: 5,
+                    message: "5 caracteres minimo",
+                },
+            },
+
+        },
+    };
+    const formFactoryProps: FormFactoryProps = { form, cols: 1, inputs: [emailProps, passwordProps] };
+
     return (
         <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
             <div className="relative sm:max-w-sm w-full">
-                <div className="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"/>
-                <div className="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"/>
+                <div className="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-45"/>
+                <div className="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-45"/>
                 <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
                     <label htmlFor="" className="block mt-3 text-sm text-gray-700 text-center font-semibold">
                         {t("loginPage.login")}
                     </label>
-                    <form method="#" action="#" className="mt-10">
-
-                        <div>
-                            <input type="email" placeholder="Correo electrónico" className="input-text"/>
-                        </div>
-
-                        <div className="mt-7">
-                            <input type="password" placeholder="Contraseña" className="input-text"/>
-                        </div>
+                    <form method="#" action="#" className="mt-10" onSubmit={form.handleSubmit(onSubmit)}>
+                        <FormFactory {...formFactoryProps}/>
 
                         <div className="mt-7 flex">
-                            <label htmlFor="remember_me" className="inline-flex items-center w-full cursor-pointer">
-                                <input id="remember_me" type="checkbox" className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember"/>
+                            <label htmlFor="remember" className="inline-flex items-center w-full cursor-pointer">
+                                <input id="remember" {...form.register("remember")} type="checkbox" className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember"/>
                                 <span className="ml-2 text-sm text-gray-600">
-                                        Recuérdame
-                                    </span>
+                                    Recuérdame
+                                </span>
                             </label>
 
                             <div className="w-full text-right">
@@ -38,7 +70,7 @@ const Login: FC = (): ReactElement => {
                         </div>
 
                         <div className="mt-7">
-                            <button className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                            <button type={"submit"} className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                                 Login
                             </button>
                         </div>
