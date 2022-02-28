@@ -3,7 +3,7 @@ import { InputProps, LabelProps, MInputProps } from "@/types/forms";
 import { useTranslation } from "react-i18next";
 
 
-export const TextInput: FC<MInputProps> = memo((
+export const CheckboxInput: FC<MInputProps> = memo((
     {
         form,
         input,
@@ -13,21 +13,21 @@ export const TextInput: FC<MInputProps> = memo((
     input.label = t(input.label);
     const inputProps: InputProps = {
         id: input.register.name,
-        type: input.type,
+        type: "checkbox",
         placeholder: input.label,
-        className: "peer input-text",
+        className: "input-checkbox",
         ...form.register(input.register.name, input.register.options),
     };
     const labelProps: LabelProps = {
-        htmlFor: inputProps.id, className: "input-label",
+        htmlFor: inputProps.id, className: "inline-flex items-center w-full cursor-pointer",
     };
     return (
-        <div className={`relative`}>
-            <input  {...inputProps}/>
-            <label {...labelProps}>{inputProps.placeholder}</label>
-            {form.formState.errors[inputProps.id] &&
-                <span className={"input-span"} role="alert">{t(form.formState.errors[inputProps.id].message)}</span>}
-        </div>
+        <label {...labelProps}>
+            <input {...inputProps}/>
+            <span className="ml-2 text-sm text-gray-600">
+                {input.label}
+            </span>
+        </label>
     );
 });
 

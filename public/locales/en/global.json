@@ -2,6 +2,8 @@
   "loginPage": {
     "login": "Login",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "remember": "Remember",
+    "category": "Category"
   }
 }

@@ -2,17 +2,24 @@
 @tailwind components;
 
 .input-text {
-    @apply h-10 pl-1 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-400;
+    @apply rounded-t-lg h-10 pl-1 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-400;
 }
 
 .input-label {
-    @apply absolute left-0 -top-3.5 pl-1 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm;
+    @apply font-semibold absolute left-0 -top-3.5 pl-1 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm;
 }
 
 .input-span {
-    @apply text-xs text-red-500 pb-10;
+    @apply pl-2 text-xs text-red-500;
 }
 
+.input-checkbox {
+    @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+}
+
+.button-style {
+    @apply px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white
+}
 @tailwind utilities;
 body {
     margin: 0;

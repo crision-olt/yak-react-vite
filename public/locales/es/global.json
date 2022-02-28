@@ -2,6 +2,8 @@
   "loginPage": {
     "login": "Inicio de sesión",
     "email": "Correo electrónico",
-    "password": "Contrasena"
+    "password": "Contraseña",
+    "remember": "Recuérdame",
+    "category": "Categoría"
   }
 }

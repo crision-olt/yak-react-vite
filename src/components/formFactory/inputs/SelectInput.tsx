@@ -1,9 +1,8 @@
 import { FC, memo, ReactElement } from "react";
-import { InputProps, LabelProps, MInputProps } from "@/types/forms";
+import { InputProps, MInputProps, Options } from "@/types/forms";
 import { useTranslation } from "react-i18next";
 
-
-export const TextInput: FC<MInputProps> = memo((
+export const SelectInput: FC<MInputProps> = memo((
     {
         form,
         input,
@@ -18,16 +17,14 @@ export const TextInput: FC<MInputProps> = memo((
         className: "peer input-text",
         ...form.register(input.register.name, input.register.options),
     };
-    const labelProps: LabelProps = {
-        htmlFor: inputProps.id, className: "input-label",
-    };
     return (
-        <div className={`relative`}>
-            <input  {...inputProps}/>
-            <label {...labelProps}>{inputProps.placeholder}</label>
+        <>
+            <select {...inputProps}>
+                {!input.register.options?.required  && <option key={`undefined${input.label}`} value={undefined}>{input.label}</option>}
+                {input.options?.map(({text,value}: Options) => <option key={`${value}${text}`} value={value}>{text}</option>)}
+            </select>
             {form.formState.errors[inputProps.id] &&
                 <span className={"input-span"} role="alert">{t(form.formState.errors[inputProps.id].message)}</span>}
-        </div>
+        </>
     );
 });
-

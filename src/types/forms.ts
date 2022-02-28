@@ -5,11 +5,16 @@ export type RegisterType = {
     options?: RegisterOptions,
 
 }
-export type InputType = "text" | "password"
+export type InputType = "text" | "password" | "checkbox" | "select"
+export type Options = {
+    value: number;
+    text: string;
+}
 export type FormKey = {
     type: InputType,
     size: number,
     label: string,
+    options?: Options[]
     register: RegisterType,
 }
 export type MInputProps = {
