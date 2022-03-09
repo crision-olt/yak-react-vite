@@ -1,29 +1,22 @@
-import { FC, memo, ReactElement } from "react";
-import { InputProps, LabelProps, MInputProps } from "@/types/forms";
-import { useTranslation } from "react-i18next";
+import { FC, memo, ReactElement }  from "react";
+import { LabelProps, MInputProps } from "@/types/forms";
+import { useInput }                from "@/hooks/useInput";
 
 
 export const CheckboxInput: FC<MInputProps> = memo((
     {
         form,
         input,
+        data,
     },
 ): ReactElement => {
-    const [t] = useTranslation("global");
-    input.label = t(input.label);
-    const inputProps: InputProps = {
-        id: input.register.name,
-        type: "checkbox",
-        placeholder: input.label,
-        className: "input-checkbox",
-        ...form.register(input.register.name, input.register.options),
-    };
+    const { inputProps } = useInput({ form, input, data });
     const labelProps: LabelProps = {
         htmlFor: inputProps.id, className: "inline-flex items-center w-full cursor-pointer",
     };
     return (
         <label {...labelProps}>
-            <input {...inputProps}/>
+            <input {...inputProps} className={"input-checkbox"}/>
             <span className="ml-2 text-sm text-gray-600">
                 {input.label}
             </span>

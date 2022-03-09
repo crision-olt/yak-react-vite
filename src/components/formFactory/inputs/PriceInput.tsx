@@ -2,8 +2,7 @@ import { FC, ReactElement } from "react";
 import { MInputProps }      from "@/types/forms";
 import { useInput }         from "@/hooks/useInput";
 
-
-export const TextInput: FC<MInputProps> = (
+export const PriceInput: FC<MInputProps> = (
     {
         form,
         input,
@@ -12,13 +11,17 @@ export const TextInput: FC<MInputProps> = (
 ): ReactElement => {
     const { inputProps, labelProps, t } = useInput({ form, input, data });
     return (
-        <div className={`relative`}>
-            <input  {...inputProps}
-                className={"peer input-text"}/>
-            <label {...labelProps}>{t(inputProps.placeholder)}</label>
+        <div className="relative">
+            <div className="flex flex-row">
+                <input {...inputProps}
+                    className={"peer input-text"}/>
+                <label {...labelProps}>{t(inputProps.placeholder)}</label>
+                <span
+                    className="flex items-center bg-grey-lighter rounded rounded-r-none px-3 font-bold text-grey-darker">$</span>
+
+            </div>
             {form.formState.errors[inputProps.id] &&
                 <span className={"input-span"} role="alert">{t(form.formState.errors[inputProps.id].message)}</span>}
         </div>
     );
 };
-
