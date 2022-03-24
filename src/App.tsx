@@ -7,6 +7,7 @@ import Products                         from "@/pages/Products/Products";
 import { Navbar }                       from "@/components/navbar/navbar";
 import Categories                       from "@/pages/Categories";
 import DeleteModal                      from "@/pages/default/DeleteModal";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
@@ -16,8 +17,7 @@ function App() {
                 <BrowserRouter>
                     <ProtectedRoute Component={Navbar}/>
                     <Routes>
-                        <Route path={"/"}
-                            element={<ProtectedRoute Component={Products}/>}>
+                        <Route path={"/"} element={<ProtectedRoute Component={Products}/>}>
                             <Route path={"edit/:id"} element={<Edit/>}/>
                             <Route path={"delete/:id"} element={<DeleteModal/>}/>
                         </Route>

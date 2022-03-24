@@ -1,5 +1,4 @@
 import { Dispatch, FC, MutableRefObject, SetStateAction } from "react";
-import { useTranslation }                                 from "react-i18next";
 import { colSpan, gridCols }                              from "@/style/grid";
 
 export type Styles = "none" | "primary" | "secondary" | "danger"
@@ -27,7 +26,6 @@ export const ButtonFactory: FC<ButtonFactoryProps> = (
         buttons,
         set,
     }) => {
-    const [t] = useTranslation("global");
     const styles: StylesKey = {
         "none": "bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus:ring-gray-300",
         "primary": "bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300",
@@ -39,7 +37,7 @@ export const ButtonFactory: FC<ButtonFactoryProps> = (
         <div className={`grid ${gridCols[cols]} gap-4`}>
             {buttons.map(({ style, type, label, onClick, size, ref }: Button) => (
                     <button ref={ref} key={`${type}${label}`} className={`button-style ${colSpan[size]} ${styles[style]}`}
-                        onClick={click(onClick)} type={type}>{t(label)}</button>
+                        onClick={click(onClick)} type={type}>{label}</button>
                 ),
             )}
         </div>

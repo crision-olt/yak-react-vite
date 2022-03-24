@@ -20,12 +20,12 @@ export type FormKey = {
 export type MInputProps = {
     input: FormKey,
     form: UseFormReturn,
+    data?: any,
 }
 export type InputProps = {
     id: string,
     type: InputType,
     placeholder: string,
-    className: string,
 } & UseFormRegisterReturn
 export type LabelProps = {
     htmlFor: string,

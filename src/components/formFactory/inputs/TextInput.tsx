@@ -10,14 +10,14 @@ export const TextInput: FC<MInputProps> = (
         data,
     },
 ): ReactElement => {
-    const { inputProps, labelProps, t } = useInput({ form, input, data });
+    const { inputProps, labelProps } = useInput({ form, input, data });
     return (
         <div className={`relative`}>
             <input  {...inputProps}
                 className={"peer input-text"}/>
-            <label {...labelProps}>{t(inputProps.placeholder)}</label>
+            <label {...labelProps}>{inputProps.placeholder}</label>
             {form.formState.errors[inputProps.id] &&
-                <span className={"input-span"} role="alert">{t(form.formState.errors[inputProps.id].message)}</span>}
+                <span className={"input-span"} role="alert">{form.formState.errors[inputProps.id].message}</span>}
         </div>
     );
 };

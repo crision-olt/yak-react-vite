@@ -9,19 +9,19 @@ export const PriceInput: FC<MInputProps> = (
         data,
     },
 ): ReactElement => {
-    const { inputProps, labelProps, t } = useInput({ form, input, data });
+    const { inputProps, labelProps } = useInput({ form, input, data });
     return (
         <div className="relative">
             <div className="flex flex-row">
                 <input {...inputProps}
                     className={"peer input-text"}/>
-                <label {...labelProps}>{t(inputProps.placeholder)}</label>
+                <label {...labelProps}>{inputProps.placeholder}</label>
                 <span
                     className="flex items-center bg-grey-lighter rounded rounded-r-none px-3 font-bold text-grey-darker">$</span>
 
             </div>
             {form.formState.errors[inputProps.id] &&
-                <span className={"input-span"} role="alert">{t(form.formState.errors[inputProps.id].message)}</span>}
+                <span className={"input-span"} role="alert">{form.formState.errors[inputProps.id].message}</span>}
         </div>
     );
 };
